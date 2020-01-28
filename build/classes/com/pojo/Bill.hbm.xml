@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17 Apr, 2019 1:19:42 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.pojo.Bill" table="bill" catalog="ehospital">
+        <id name="bid" type="java.lang.Integer">
+            <column name="bid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="pdisease" class="com.pojo.Pdisease" fetch="join">
+            <column name="pdid" />
+        </many-to-one>
+        <many-to-one name="pregister" class="com.pojo.Pregister" fetch="join">
+            <column name="pid" />
+        </many-to-one>
+        <property name="generalDay" type="java.lang.Integer">
+            <column name="generalDay" />
+        </property>
+        <property name="generalTotal" type="java.lang.Integer">
+            <column name="generalTotal" />
+        </property>
+        <property name="specialDay" type="java.lang.Integer">
+            <column name="specialDay" />
+        </property>
+        <property name="specialTotal" type="java.lang.Integer">
+            <column name="specialTotal" />
+        </property>
+        <property name="acNonac" type="string">
+            <column name="AcNonac" length="55" />
+        </property>
+        <property name="icuDay" type="java.lang.Integer">
+            <column name="icuDay" />
+        </property>
+        <property name="icuTotal" type="java.lang.Integer">
+            <column name="icuTotal" />
+        </property>
+        <property name="otherCharges" type="java.lang.Integer">
+            <column name="OtherCharges" />
+        </property>
+        <property name="reason" type="string">
+            <column name="reason" length="200" />
+        </property>
+        <property name="operationTheater" type="java.lang.Integer">
+            <column name="operationTheater" />
+        </property>
+        <property name="labTestCharges" type="java.lang.Integer">
+            <column name="labTestCharges" />
+        </property>
+        <property name="consultingFees" type="java.lang.Integer">
+            <column name="consultingFees" />
+        </property>
+        <property name="payment" type="string">
+            <column name="Payment" length="10" />
+        </property>
+        <property name="medicalCharges" type="java.lang.Integer">
+            <column name="medicalCharges" />
+        </property>
+        <property name="total" type="java.lang.Long">
+            <column name="Total" />
+        </property>
+        <property name="date" type="date">
+            <column name="date" length="0" />
+        </property>
+        <property name="status" type="string">
+            <column name="status" length="9" />
+        </property>
+    </class>
+</hibernate-mapping>

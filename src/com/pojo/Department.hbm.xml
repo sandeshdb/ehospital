@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17 Apr, 2019 1:19:42 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.pojo.Department" table="department" catalog="ehospital">
+        <id name="deptid" type="java.lang.Integer">
+            <column name="deptid" />
+            <generator class="identity" />
+        </id>
+        <property name="deptname" type="string">
+            <column name="deptname" length="111" />
+        </property>
+        <set name="doctors" table="doctor" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="deptid" />
+            </key>
+            <one-to-many class="com.pojo.Doctor" />
+        </set>
+    </class>
+</hibernate-mapping>

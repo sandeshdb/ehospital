@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17 Apr, 2019 1:19:42 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.pojo.Report" table="report" catalog="ehospital">
+        <id name="rid" type="java.lang.Integer">
+            <column name="rid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="pdisease" class="com.pojo.Pdisease" fetch="join">
+            <column name="pdid" />
+        </many-to-one>
+        <property name="rname" type="string">
+            <column name="rname" length="111" />
+        </property>
+        <property name="rphoto" type="binary">
+            <column name="rphoto" />
+        </property>
+        <set name="histories" table="history" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="rid" />
+            </key>
+            <one-to-many class="com.pojo.History" />
+        </set>
+    </class>
+</hibernate-mapping>

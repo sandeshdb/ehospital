@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17 Apr, 2019 1:19:42 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.pojo.History" table="history" catalog="ehospital">
+        <id name="hid" type="java.lang.Integer">
+            <column name="hid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="pdisease" class="com.pojo.Pdisease" fetch="select">
+            <column name="pdid" />
+        </many-to-one>
+        <many-to-one name="pregister" class="com.pojo.Pregister" fetch="select">
+            <column name="pid" />
+        </many-to-one>
+        <many-to-one name="report" class="com.pojo.Report" fetch="select">
+            <column name="rid" />
+        </many-to-one>
+        <property name="time" type="time">
+            <column name="time" length="0" />
+        </property>
+    </class>
+</hibernate-mapping>

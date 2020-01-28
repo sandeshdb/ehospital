@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17 Apr, 2019 1:19:42 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.pojo.Doctor" table="doctor" catalog="ehospital">
+        <id name="DId" type="java.lang.Integer">
+            <column name="d_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="department" class="com.pojo.Department" fetch="join">
+            <column name="deptid" />
+        </many-to-one>
+        <property name="duniqid" type="string">
+            <column name="duniqid" length="222" />
+        </property>
+        <property name="dname" type="string">
+            <column name="dname" length="100" />
+        </property>
+        <property name="mobileNumber" type="java.lang.Long">
+            <column name="mobileNumber" />
+        </property>
+        <property name="demailid" type="string">
+            <column name="demailid" length="100" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="444" />
+        </property>
+        <property name="qulification" type="string">
+            <column name="qulification" length="100" />
+        </property>
+        <property name="spcialist" type="string">
+            <column name="spcialist" length="100" />
+        </property>
+        <property name="expirence" type="java.lang.Integer">
+            <column name="expirence" />
+        </property>
+        <property name="joiningDate" type="date">
+            <column name="joining_date" length="0" />
+        </property>
+        <property name="pic" type="binary">
+            <column name="pic" />
+        </property>
+        <property name="day" type="string">
+            <column name="day" length="111" />
+        </property>
+        <property name="inTime" type="time">
+            <column name="inTime" length="0" />
+        </property>
+        <property name="outTime" type="time">
+            <column name="outTime" length="0" />
+        </property>
+        <set name="pdiseases" table="pdisease" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="d_id" />
+            </key>
+            <one-to-many class="com.pojo.Pdisease" />
+        </set>
+        <set name="appos" table="appo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="DId" />
+            </key>
+            <one-to-many class="com.pojo.Appo" />
+        </set>
+    </class>
+</hibernate-mapping>

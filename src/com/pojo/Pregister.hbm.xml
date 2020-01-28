@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17 Apr, 2019 1:19:42 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.pojo.Pregister" table="pregister" catalog="ehospital">
+        <id name="pid" type="java.lang.Integer">
+            <column name="pid" />
+            <generator class="identity" />
+        </id>
+        <property name="pname" type="string">
+            <column name="pName" length="111" />
+        </property>
+        <property name="pemailid" type="string">
+            <column name="pEmailid" length="60" />
+        </property>
+        <property name="pmobileNumber" type="java.lang.Long">
+            <column name="pMobileNumber" />
+        </property>
+        <property name="paddress" type="string">
+            <column name="pAddress" length="111" />
+        </property>
+        <property name="dob" type="date">
+            <column name="dob" length="0" />
+        </property>
+        <property name="gender" type="string">
+            <column name="gender" length="50" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="30" />
+        </property>
+        <property name="otp" type="java.lang.Integer">
+            <column name="otp" />
+        </property>
+        <set name="bills" table="bill" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="pid" />
+            </key>
+            <one-to-many class="com.pojo.Bill" />
+        </set>
+        <set name="pdiseases" table="pdisease" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="pid" />
+            </key>
+            <one-to-many class="com.pojo.Pdisease" />
+        </set>
+        <set name="histories" table="history" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="pid" />
+            </key>
+            <one-to-many class="com.pojo.History" />
+        </set>
+        <set name="appos" table="appo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="pid" />
+            </key>
+            <one-to-many class="com.pojo.Appo" />
+        </set>
+    </class>
+</hibernate-mapping>

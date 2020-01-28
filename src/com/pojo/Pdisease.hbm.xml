@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 12 Apr, 2019 7:47:31 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.pojo.Pdisease" table="pdisease" catalog="ehospital">
+        <id name="pdid" type="java.lang.Integer">
+            <column name="pdid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="doctor" class="com.pojo.Doctor" fetch="join">
+            <column name="d_id" />
+        </many-to-one>
+        <many-to-one name="pregister" class="com.pojo.Pregister" fetch="join">
+            <column name="pid" />
+        </many-to-one>
+        <property name="diseaseName" type="string">
+            <column name="diseaseName" length="111" />
+        </property>
+        <property name="admissionDate" type="date">
+            <column name="AdmissionDate" length="0" />
+        </property>
+        <property name="wardno" type="string">
+            <column name="wardno" length="10" />
+        </property>
+        <property name="bedno" type="string">
+            <column name="bedno" length="10" />
+        </property>
+        <property name="inchargeName" type="string">
+            <column name="inchargeName" length="111" />
+        </property>
+        <set name="bills" table="bill" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="pdid" />
+            </key>
+            <one-to-many class="com.pojo.Bill" />
+        </set>
+        <set name="reports" table="report" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="pdid" />
+            </key>
+            <one-to-many class="com.pojo.Report" />
+        </set>
+        <set name="histories" table="history" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="pdid" />
+            </key>
+            <one-to-many class="com.pojo.History" />
+        </set>
+    </class>
+</hibernate-mapping>
